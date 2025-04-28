@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unraveling Garden at Sainte-Adresse</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7fafc;
+            font-family: 'Inter', 'Roboto', Arial, sans-serif;
+            color: #1a3a2a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #17425e;
+        }
+        .painting-img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(163, 201, 226, 0.10);
+            background: #fff;
+            display: block;
+        }
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #4e9e7c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.08);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10;
+            text-decoration: none;
+        }
+        .nav-arrow.left {
+            left: 2vw;
+        }
+        .nav-arrow.right {
+            right: 2vw;
+        }
+        .nav-arrow:hover, .nav-arrow:focus {
+            background: #357a5b;
+            transform: translateY(-50%) scale(1.08);
+        }
+        @media (max-width: 950px) {
+            .container, .painting-img {
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 700px) {
+            .nav-arrow {
+                width: 2.2rem;
+                height: 2.2rem;
+                font-size: 1.1rem;
+            }
+            .nav-arrow.left {
+                left: 1vw;
+            }
+            .nav-arrow.right {
+                right: 1vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Arrow (Back to Home) -->
+    <a href="{{ url_for('homepage') }}" class="nav-arrow left" title="Back to Home">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <!-- Right Arrow (Next: a.html) -->
+    <a href="{{ url_for('a') }}" class="nav-arrow right" title="Next">
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+    <div class="container">
+        <div class="title">Garden at Sainte-Adresse</div>
+        <img class="painting-img" src="{{ url_for('static', filename='original_image.png') }}" alt="Garden at Sainte-Adresse by Claude Monet">
+    </div>
+</body>
+</html>

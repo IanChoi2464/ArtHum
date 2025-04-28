@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden at Sainte-Adresse Quiz</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7fafc;
+            font-family: 'Inter', 'Roboto', Arial, sans-serif;
+            color: #1a3a2a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .quiz-container {
+            max-width: 600px;
+            width: 100%;
+            margin: 3rem auto 2rem auto;
+            background: #fff;
+            border-radius: 1.2rem;
+            box-shadow: 0 4px 24px rgba(163, 201, 226, 0.10);
+            padding: 2.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .quiz-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #17425e;
+        }
+        .quiz-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(163, 201, 226, 0.10);
+            background: #fff;
+            display: block;
+            margin: 0 auto 1.5rem auto;
+        }
+        .question-block {
+            width: 100%;
+            margin-bottom: 2rem;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 0.7s;
+        }
+        .question-block.active {
+            display: flex;
+        }
+        .question-text {
+            font-size: 1.18rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            text-align: center;
+            color: #357a5b;
+        }
+        .answers {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .answer-btn {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.9rem 1.2rem;
+            font-size: 1.08rem;
+            border: 2px solid #a3c9e2;
+            border-radius: 0.7rem;
+            background: #f4faff;
+            color: #1a3a2a;
+            cursor: pointer;
+            transition: background 0.2s, border 0.2s, color 0.2s;
+            text-align: left;
+        }
+        .answer-btn.selected {
+            border: 2px solid #4e9e7c;
+            background: #e6f7ed;
+        }
+        .answer-btn.correct {
+            background: #d2f5d2;
+            border: 2px solid #4e9e7c;
+            color: #226c2a;
+        }
+        .answer-btn.incorrect {
+            background: #ffd6d6;
+            border: 2px solid #e26a6a;
+            color: #a12a2a;
+        }
+        .next-btn {
+            margin-top: 2rem;
+            padding: 0.8rem 2.2rem;
+            background: #4e9e7c;
+            color: #fff;
+            font-size: 1.08rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.08);
+            transition: background 0.2s, transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .next-btn:hover, .next-btn:focus {
+            background: #357a5b;
+            transform: scale(1.04);
+        }
+        .results-block {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 0.7s;
+        }
+        .results-block.active {
+            display: flex;
+        }
+        .results-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #17425e;
+            margin-bottom: 1.2rem;
+        }
+        .results-score {
+            font-size: 1.2rem;
+            color: #357a5b;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 700px) {
+            .quiz-container {
+                max-width: 98vw;
+                padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+            }
+            .quiz-title {
+                font-size: 1.3rem;
+            }
+            .quiz-image {
+                max-width: 98vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="quiz-title">Quiz</div>
+        <!-- Question 1 -->
+        <div class="question-block" id="q0">
+            <img class="quiz-image" src="{{ url_for('static', filename='image_a.png') }}" alt="Garden at Sainte-Adresse without steamboats and flags">
+            <div class="question-text">1. When the steamboats and flags are removed, what main feeling does the painting convey?</div>
+            <div class="answers">
+                <button class="answer-btn" data-correct="false">(a) A strong sense of modern life</button>
+                <button class="answer-btn" data-correct="true">(b) A peaceful atmosphere</button>
+                <button class="answer-btn" data-correct="false">(c) A busy industrial port</button>
+                <button class="answer-btn" data-correct="false">(d) A celebration of French national pride</button>
+            </div>
+            <button class="next-btn" style="display:none;">Next</button>
+        </div>
+        <!-- Question 2 -->
+        <div class="question-block" id="q1">
+            <img class="quiz-image" src="{{ url_for('static', filename='image_c.png') }}" alt="Garden at Sainte-Adresse without the garden">
+            <div class="question-text">2. True or False: Without the garden, the painting becomes a symbol of human achievement and care.</div>
+            <div class="answers">
+                <button class="answer-btn" data-correct="false">True</button>
+                <button class="answer-btn" data-correct="true">False</button>
+            </div>
+            <button class="next-btn" style="display:none;">Next</button>
+        </div>
+        <!-- Question 3 -->
+        <div class="question-block" id="q2">
+            <img class="quiz-image" src="{{ url_for('static', filename='original_image.png') }}" alt="Original Garden at Sainte-Adresse">
+            <div class="question-text">3. What did the steamboats and flags originally symbolize in Garden at Sainte-Adresse?</div>
+            <div class="answers">
+                <button class="answer-btn" data-correct="false">(a) Natural beauty and freedom</button>
+                <button class="answer-btn" data-correct="true">(b) Industrial progress and national identity</button>
+                <button class="answer-btn" data-correct="false">(c) Ancient traditions</button>
+                <button class="answer-btn" data-correct="false">(d) Artistic imagination</button>
+            </div>
+            <button class="next-btn" style="display:none;">Next</button>
+        </div>
+        <!-- Question 4 -->
+        <div class="question-block" id="q3">
+            <img class="quiz-image" src="{{ url_for('static', filename='image_b.png') }}" alt="Garden at Sainte-Adresse without people">
+            <div class="question-text">4. True or False: Without the people, the garden still feels lively and full of human stories.</div>
+            <div class="answers">
+                <button class="answer-btn" data-correct="false">True</button>
+                <button class="answer-btn" data-correct="true">False</button>
+            </div>
+            <button class="next-btn" style="display:none;">Next</button>
+        </div>
+        <!-- Question 5 -->
+        <div class="question-block" id="q4">
+            <img class="quiz-image" src="{{ url_for('static', filename='image_b.png') }}" alt="Garden at Sainte-Adresse without people">
+            <div class="question-text">5. When the people disappear from the scene, how does the painting's atmosphere change?</div>
+            <div class="answers">
+                <button class="answer-btn" data-correct="false">(a) It feels warmer and more welcoming.</button>
+                <button class="answer-btn" data-correct="true">(b) It feels empty, distant, and timeless.</button>
+                <button class="answer-btn" data-correct="false">(c) It feels chaotic and crowded.</button>
+                <button class="answer-btn" data-correct="false">(d) It feels energetic and bustling.</button>
+            </div>
+            <button class="next-btn" style="display:none;">See Results</button>
+        </div>
+        <!-- Results -->
+        <div class="results-block" id="results">
+            <div class="results-title">Quiz Results</div>
+            <div class="results-score" id="results-score"></div>
+            <button class="next-btn" id="restart-btn">Go Back to Quiz</button>
+            <a href="{{ url_for('homepage') }}" class="next-btn" id="home-btn" style="margin-top:1rem; text-align:center;">Back to Home</a>
+        </div>
+    </div>
+    <script>
+        // Quiz logic
+        const totalQuestions = 5;
+        let current = 0;
+        let correctCount = 0;
+        const questionBlocks = document.querySelectorAll('.question-block');
+        const resultsBlock = document.getElementById('results');
+        const resultsScore = document.getElementById('results-score');
+
+        function showQuestion(idx) {
+            questionBlocks.forEach((q, i) => {
+                q.classList.toggle('active', i === idx);
+            });
+            resultsBlock.classList.remove('active');
+        }
+
+        function showResults() {
+            questionBlocks.forEach(q => q.classList.remove('active'));
+            resultsBlock.classList.add('active');
+            resultsScore.textContent = `You answered ${correctCount} out of ${totalQuestions} questions correctly!`;
+        }
+
+        questionBlocks.forEach((block, idx) => {
+            const answers = block.querySelectorAll('.answer-btn');
+            const nextBtn = block.querySelector('.next-btn');
+            let answered = false;
+            answers.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (answered) return;
+                    answered = true;
+                    answers.forEach(b => b.disabled = true);
+                    btn.classList.add('selected');
+                    if (btn.dataset.correct === "true") {
+                        btn.classList.add('correct');
+                        correctCount++;
+                    } else {
+                        btn.classList.add('incorrect');
+                        // Also highlight the correct answer
+                        answers.forEach(b => {
+                            if (b.dataset.correct === "true") b.classList.add('correct');
+                        });
+                    }
+                    nextBtn.style.display = 'block';
+                });
+            });
+            nextBtn.addEventListener('click', function() {
+                if (idx < totalQuestions - 1) {
+                    showQuestion(idx + 1);
+                } else {
+                    showResults();
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+
+        // Show the first question
+        showQuestion(0);
+
+        // Restart quiz logic
+        document.getElementById('restart-btn').addEventListener('click', function() {
+            // Reset all answer buttons
+            document.querySelectorAll('.answer-btn').forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove('selected', 'correct', 'incorrect');
+            });
+            // Hide all next buttons
+            document.querySelectorAll('.next-btn').forEach(btn => {
+                if (btn.id !== 'restart-btn') btn.style.display = 'none';
+            });
+            // Reset counters
+            correctCount = 0;
+            current = 0;
+            // Show first question
+            showQuestion(0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

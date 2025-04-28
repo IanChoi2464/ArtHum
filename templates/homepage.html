@@ -1,16 +1,132 @@
-{% extends "layout.html" %}
-
-{% block content %}
-<div class="home-container">
-    <div class="home-content">
-        <h1>Welcome to Gugak World!</h1>
-        <div class="home-logo">
-            <img src="https://www.kocis.go.kr/eng/webzine/201803/common/images/img3-2.jpg" alt="Gugak World Logo">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unraveling Garden at Sainte-Adresse</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #a3c9e2;
+            --green: #b7d7b0;
+            --overlay: rgba(163, 201, 226, 0.5);
+            --font: 'Inter', 'Roboto', Arial, sans-serif;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font);
+            background: var(--blue);
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .hero {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('https://collectionapi.metmuseum.org/api/collection/v1/iiif/437133/preview') center center/cover no-repeat;
+            background-attachment: fixed;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--overlay);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #1a3a2a;
+            padding: 2rem;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.2s forwards;
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.5s forwards;
+        }
+        .hero-button {
+            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            background: #4e9e7c;
+            color: #fff;
+            border: none;
+            border-radius: 2rem;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.1);
+            transition: background 0.2s, transform 0.2s;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s 0.8s forwards;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .hero-button:hover, .hero-button:focus {
+            background: #357a5b;
+            transform: scale(1.05);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 900px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 1.3rem;
+            }
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            .hero-content {
+                padding: 1rem;
+            }
+            .hero {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Unraveling Garden at Sainte-Adresse</h1>
+            <div class="hero-subtitle">How Removing Elements Changes Meaning and Mood</div>
+            <a href="{{ url_for('original') }}" class="hero-button">
+                Start Learning
+            </a>
         </div>
-        <div class="about-description">
-            <p>Experience the rich heritage of Korean traditional music through our interactive learning platform.</p>
-        </div>
-        <a href="/about" class="start-button">Start Now</a>
-    </div>
-</div>
-{% endblock %}
+    </section>
+</body>
+</html>

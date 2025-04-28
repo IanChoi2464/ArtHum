@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unraveling Garden at Sainte-Adresse</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7fafc;
+            font-family: 'Inter', 'Roboto', Arial, sans-serif;
+            color: #1a3a2a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            scroll-behavior: smooth;
+        }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 3rem auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #17425e;
+        }
+        .painting-img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px rgba(163, 201, 226, 0.10);
+            background: #fff;
+            display: block;
+        }
+        .explanation-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(.23,1.01,.32,1);
+            margin: 3rem auto 0 auto;
+            max-width: 700px;
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(163, 201, 226, 0.08);
+            padding: 2rem 1.5rem;
+            font-size: 1.18rem;
+        }
+        .explanation-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .explanation-section h2 {
+            font-size: 1.35rem;
+            color: #357a5b;
+            margin-top: 0;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        .explanation-section .explanation-block {
+            margin-bottom: 1.2rem;
+        }
+        .explanation-section .explanation-label {
+            font-weight: 600;
+            color: #4e9e7c;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+        @media (max-width: 950px) {
+            .container, .painting-img {
+                max-width: 98vw;
+            }
+            .explanation-section {
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 700px) {
+            .title {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
+            }
+            .painting-img {
+                max-width: 98vw;
+            }
+        }
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #4e9e7c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.08);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10;
+            text-decoration: none;
+        }
+        .nav-arrow.left {
+            left: 2vw;
+        }
+        .nav-arrow.right {
+            right: 2vw;
+        }
+        .nav-arrow:hover, .nav-arrow:focus {
+            background: #357a5b;
+            transform: translateY(-50%) scale(1.08);
+        }
+        @media (max-width: 700px) {
+            .nav-arrow {
+                width: 2.2rem;
+                height: 2.2rem;
+                font-size: 1.1rem;
+            }
+            .nav-arrow.left {
+                left: 1vw;
+            }
+            .nav-arrow.right {
+                right: 1vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Arrow (Back to a.html) -->
+    <a href="{{ url_for('a') }}" class="nav-arrow left" title="Back">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <!-- Right Arrow (Next: c.html) -->
+    <a href="{{ url_for('c') }}" class="nav-arrow right" title="Next">
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+    <div class="container">
+        <div class="title">Without people</div>
+        <img class="painting-img" src="{{ url_for('static', filename='image_b.png') }}" alt="Garden at Sainte-Adresse without people">
+    </div>
+    <div class="explanation-section" id="explanation">
+        <h2>Looking Closer</h2>
+        <div class="explanation-block">
+            <span class="explanation-label">First Impression</span>
+            Without the people, the garden feels strangely empty and distant, as if the lively moment that was once captured has quietly faded away.
+        </div>
+        <div class="explanation-block">
+            <span class="explanation-label">Changes</span>
+            When people were present, the painting felt like a vivid snapshot of a living moment in time — but without them, it looks more like a timeless, unchanging place, disconnected from any specific event or story.
+        </div>
+        <div class="explanation-block">
+            <span class="explanation-label">Meaning</span>
+            The people brings life, memory, and narrative to the scene, turning the garden into a living experience rather than just a static, beautiful setting.
+        </div>
+    </div>
+    <script>
+        // Fade in the explanation section when it scrolls into view
+        document.addEventListener('DOMContentLoaded', function() {
+            function revealExplanation() {
+                var explanation = document.getElementById('explanation');
+                var rect = explanation.getBoundingClientRect();
+                var windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+                if (rect.top <= windowHeight - 60) {
+                    explanation.classList.add('visible');
+                    window.removeEventListener('scroll', revealExplanation);
+                }
+            }
+            window.addEventListener('scroll', revealExplanation);
+            revealExplanation();
+        });
+    </script>
+</body>
+</html>
