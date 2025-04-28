@@ -93,16 +93,16 @@
 </head>
 <body>
     <!-- Left Arrow (Back to Home) -->
-    <a href="{{ url_for('homepage') }}" class="nav-arrow left" title="Back to Home">
+    <a href="../index.html" class="nav-arrow left" title="Back to Home">
         <i class="fa-solid fa-arrow-left"></i>
     </a>
     <!-- Right Arrow (Next: a.html) -->
-    <a href="{{ url_for('a') }}" class="nav-arrow right" title="Next">
+    <a href="a.html" class="nav-arrow right" title="Next">
         <i class="fa-solid fa-arrow-right"></i>
     </a>
     <div class="container">
         <div class="title">Garden at Sainte-Adresse</div>
-        <img class="painting-img" src="{{ url_for('static', filename='original_image.png') }}" alt="Garden at Sainte-Adresse by Claude Monet">
+        <img class="painting-img" src="../static/original_image.png" alt="Garden at Sainte-Adresse by Claude Monet">
     </div>
 </body>
 </html>

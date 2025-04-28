@@ -164,7 +164,7 @@
         <div class="quiz-title">Quiz</div>
         <!-- Question 1 -->
         <div class="question-block" id="q0">
-            <img class="quiz-image" src="{{ url_for('static', filename='image_a.png') }}" alt="Garden at Sainte-Adresse without steamboats and flags">
+            <img class="quiz-image" src="../static/image_a.png" alt="Garden at Sainte-Adresse without steamboats and flags">
             <div class="question-text">1. When the steamboats and flags are removed, what main feeling does the painting convey?</div>
             <div class="answers">
                 <button class="answer-btn" data-correct="false">(a) A strong sense of modern life</button>
@@ -176,7 +176,7 @@
         </div>
         <!-- Question 2 -->
         <div class="question-block" id="q1">
-            <img class="quiz-image" src="{{ url_for('static', filename='image_c.png') }}" alt="Garden at Sainte-Adresse without the garden">
+            <img class="quiz-image" src="../static/image_c.png" alt="Garden at Sainte-Adresse without the garden">
             <div class="question-text">2. True or False: Without the garden, the painting becomes a symbol of human achievement and care.</div>
             <div class="answers">
                 <button class="answer-btn" data-correct="false">True</button>
@@ -186,7 +186,7 @@
         </div>
         <!-- Question 3 -->
         <div class="question-block" id="q2">
-            <img class="quiz-image" src="{{ url_for('static', filename='original_image.png') }}" alt="Original Garden at Sainte-Adresse">
+            <img class="quiz-image" src="../static/original_image.png" alt="Original Garden at Sainte-Adresse">
             <div class="question-text">3. What did the steamboats and flags originally symbolize in Garden at Sainte-Adresse?</div>
             <div class="answers">
                 <button class="answer-btn" data-correct="false">(a) Natural beauty and freedom</button>
@@ -198,7 +198,7 @@
         </div>
         <!-- Question 4 -->
         <div class="question-block" id="q3">
-            <img class="quiz-image" src="{{ url_for('static', filename='image_b.png') }}" alt="Garden at Sainte-Adresse without people">
+            <img class="quiz-image" src="../static/image_b.png" alt="Garden at Sainte-Adresse without people">
             <div class="question-text">4. True or False: Without the people, the garden still feels lively and full of human stories.</div>
             <div class="answers">
                 <button class="answer-btn" data-correct="false">True</button>
@@ -208,7 +208,7 @@
         </div>
         <!-- Question 5 -->
         <div class="question-block" id="q4">
-            <img class="quiz-image" src="{{ url_for('static', filename='image_b.png') }}" alt="Garden at Sainte-Adresse without people">
+            <img class="quiz-image" src="../static/image_b.png" alt="Garden at Sainte-Adresse without people">
             <div class="question-text">5. When the people disappear from the scene, how does the painting's atmosphere change?</div>
             <div class="answers">
                 <button class="answer-btn" data-correct="false">(a) It feels warmer and more welcoming.</button>
@@ -222,8 +222,7 @@
         <div class="results-block" id="results">
             <div class="results-title">Quiz Results</div>
             <div class="results-score" id="results-score"></div>
-            <button class="next-btn" id="restart-btn">Go Back to Quiz</button>
-            <a href="{{ url_for('homepage') }}" class="next-btn" id="home-btn" style="margin-top:1rem; text-align:center;">Back to Home</a>
+            <a href="../index.html" class="next-btn" id="home-btn" style="margin-top:1rem; text-align:center;">Back to Home</a>
         </div>
     </div>
     <script>

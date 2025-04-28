@@ -139,16 +139,16 @@
 </head>
 <body>
     <!-- Left Arrow (Back to a.html) -->
-    <a href="{{ url_for('a') }}" class="nav-arrow left" title="Back">
+    <a href="a.html" class="nav-arrow left" title="Back">
         <i class="fa-solid fa-arrow-left"></i>
     </a>
     <!-- Right Arrow (Next: c.html) -->
-    <a href="{{ url_for('c') }}" class="nav-arrow right" title="Next">
+    <a href="c.html" class="nav-arrow right" title="Next">
         <i class="fa-solid fa-arrow-right"></i>
     </a>
     <div class="container">
         <div class="title">Without people</div>
-        <img class="painting-img" src="{{ url_for('static', filename='image_b.png') }}" alt="Garden at Sainte-Adresse without people">
+        <img class="painting-img" src="../static/image_b.png" alt="Garden at Sainte-Adresse without people">
     </div>
     <div class="explanation-section" id="explanation">
         <h2>Looking Closer</h2>
