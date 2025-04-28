@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unraveling Garden at Sainte-Adresse</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f7fafc;
+            font-family: 'Inter', 'Roboto', Arial, sans-serif;
+            color: #1a3a2a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .summary-container {
+            max-width: 700px;
+            width: 100%;
+            margin: 3rem auto 2rem auto;
+            background: #fff;
+            border-radius: 1.2rem;
+            box-shadow: 0 4px 24px rgba(163, 201, 226, 0.10);
+            padding: 2.5rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .summary-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #17425e;
+        }
+        .summary-section {
+            width: 100%;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .summary-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(163, 201, 226, 0.10);
+            background: #fff;
+            display: block;
+            margin-bottom: 1.2rem;
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #357a5b;
+            margin-bottom: 0.7rem;
+            text-align: center;
+        }
+        .section-text {
+            font-size: 1.08rem;
+            color: #234;
+            text-align: center;
+            line-height: 1.6;
+        }
+        .nav-arrow {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #4e9e7c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.08);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10;
+            text-decoration: none;
+        }
+        .nav-arrow.left {
+            left: 2vw;
+        }
+        .nav-arrow.right {
+            right: 2vw;
+        }
+        .nav-arrow:hover, .nav-arrow:focus {
+            background: #357a5b;
+            transform: translateY(-50%) scale(1.08);
+        }
+        @media (max-width: 900px) {
+            .summary-container {
+                max-width: 98vw;
+                padding: 1.2rem 0.5rem 1.5rem 0.5rem;
+            }
+        }
+        @media (max-width: 700px) {
+            .summary-title {
+                font-size: 1.3rem;
+            }
+            .summary-img {
+                max-width: 98vw;
+            }
+            .nav-arrow {
+                width: 2.2rem;
+                height: 2.2rem;
+                font-size: 1.1rem;
+            }
+            .nav-arrow.left {
+                left: 1vw;
+            }
+            .nav-arrow.right {
+                right: 1vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Left Arrow (Back to c.html) -->
+    <a href="c.html" class="nav-arrow left" title="Back">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+    <!-- Right Arrow (Next: quiz.html) -->
+    <a href="quiz.html" class="nav-arrow right" title="Next">
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+    <div class="summary-container">
+        <div class="summary-title">Summary: The Elements of Garden at Sainte-Adresse</div>
+        <!-- Steamboats and Flags -->
+        <div class="summary-section">
+            <img class="summary-img" src="../static/image_a.png" alt="Garden at Sainte-Adresse without steamboats and flags">
+            <div class="section-title">The Meaning of the Steamboats and Flags</div>
+            <div class="section-text">
+                The steamboats and flags in Monet's painting symbolize the arrival of modernity and progress. They represent the movement, industry, and national identity of 19th-century France, reminding viewers that even peaceful scenes are touched by the changes of the modern world.
+            </div>
+        </div>
+        <!-- People -->
+        <div class="summary-section">
+            <img class="summary-img" src="../static/image_b.png" alt="Garden at Sainte-Adresse without people">
+            <div class="section-title">The Meaning of the People</div>
+            <div class="section-text">
+                The people in the garden bring warmth, memory, and a sense of belonging to the scene. Their presence turns the garden into a place of family, leisure, and living history. Without them, the painting feels empty and timeless, lacking the stories and connections that make a place meaningful.
+            </div>
+        </div>
+        <!-- Garden -->
+        <div class="summary-section">
+            <img class="summary-img" src="../static/image_c.png" alt="Garden at Sainte-Adresse without the garden">
+            <div class="section-title">The Meaning of the Garden</div>
+            <div class="section-text">
+                The garden itself stands for human care, order, and the desire to shape nature into a place of beauty and comfort. It is a symbol of memory, gathering, and the human touch. Without the garden, only the vast, indifferent forces of nature remain.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
